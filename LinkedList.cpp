@@ -1,40 +1,35 @@
 #include <iostream>
+#include <string>
 #include "LinkedList.hpp"
 
 LinkedList::LinkedList() {
-    head = NULL;
+    head = nullptr;
 }
 
-LinkedList::LinkedList(Node * prev_node) {
+LinkedList::LinkedList(Node* prev_node) {
     head = prev_node;
 }
 
-void LinkedList::create_beginning(int new_data) {
-    Node * new_node = new Node(new_data);
+void LinkedList::create_beginning(const std::string& new_data) {
+    Node* new_node = new Node(new_data);
     new_node->next = head;
     head = new_node;
 }
 
-/**
- * @brief Based on the position, it puts the new data in the list AFTER said position (ie, if position = 0, it will put the new data in the first position after 0)
- * 
- * @param position 
- * @param new_data 
- */
-void LinkedList::create_position(int position, int new_data) {
-    Node * node = head;
+void LinkedList::create_position(int position, const std::string& new_data) {
+    Node* node = head;
     int counter = 0;
-    Node * new_node = new Node(new_data);
+    Node* new_node = new Node(new_data);
 
-    if (head == NULL || position == 0) {
-        std::cout << "La lista está vacía, se añadirá un elemento al azar" << std::endl;
+    if (head == nullptr || position == 0) {
+        std::cout << "The list is empty, adding an element at the beginning." << std::endl;
         create_beginning(new_data);
         return;
     }
 
-    while (node != NULL) {
-        if ((counter) == position) {
-            Node * tmp = node;
+    while (node != nullptr) {
+        if (counter == position) {
+            Node* tmp = node;
             node = new_node;
             new_node->next = tmp;
             return;
@@ -43,17 +38,17 @@ void LinkedList::create_position(int position, int new_data) {
         counter++;
     }
 
-    // if no position, add to end 
-    create_end(new_data); 
+    // If no position, add to the end
+    create_end(new_data);
     return;
 }
 
-void LinkedList::insert_after_value(int value, int new_data) {
-    Node * node = head;
-    Node * new_node = new Node(new_data);
-    while (node != NULL) {
-        if (value == (node)->data) {
-            Node * tmp = node->next;
+void LinkedList::insert_after_value(const std::string& value, const std::string& new_data) {
+    Node* node = head;
+    Node* new_node = new Node(new_data);
+    while (node != nullptr) {
+        if (value == node->data) {
+            Node* tmp = node->next;
             node->next = new_node;
             new_node->next = tmp;
             return;
@@ -63,21 +58,21 @@ void LinkedList::insert_after_value(int value, int new_data) {
     return;
 }
 
-void LinkedList::create_end(int new_data) {
-    Node *node = head;
-    Node *new_node = new Node(new_data);
-    while (node->next != NULL) {
+void LinkedList::create_end(const std::string& new_data) {
+    Node* node = head;
+    Node* new_node = new Node(new_data);
+    while (node->next != nullptr) {
         node = node->next;
     }
     node->next = new_node;
     return;
 }
 
-int LinkedList::search(int value) {
-    Node * node = head;
+int LinkedList::search(const std::string& value) {
+    Node* node = head;
     int counter = 0;
-    while (node != NULL) {
-        if (value == (node)->data) {
+    while (node != nullptr) {
+        if (value == node->data) {
             return counter;
         }
         node = node->next;
@@ -87,18 +82,18 @@ int LinkedList::search(int value) {
 }
 
 void LinkedList::display_list() {
-    Node * node = head;
-    while (node != NULL) {
+    Node* node = head;
+    while (node != nullptr) {
         std::cout << node->data << " ";
         node = node->next;
     }
     std::cout << std::endl;
 }
 
-void LinkedList::update(int position, int new_data) {
-    Node * node = head;
+void LinkedList::update(int position, const std::string& new_data) {
+    Node* node = head;
     int counter = 0;
-    while (node != NULL) {
+    while (node != nullptr) {
         if (counter == position) {
             node->data = new_data;
             return;
@@ -110,23 +105,23 @@ void LinkedList::update(int position, int new_data) {
 }
 
 void LinkedList::delete_head() {
-    Node * node = head;
-    if (node != NULL) {
-        Node * tmp = node->next;
+    Node* node = head;
+    if (node != nullptr) {
+        Node* tmp = node->next;
         head = tmp;
         delete node;
         return;
     }
-    std::cout << "No es posible eliminar la cabeza" << std::endl;
+    std::cout << "Cannot delete the head. The list is empty." << std::endl;
     return;
 }
 
-void LinkedList::delete_value(int value) {
-    Node * node = head;
-    Node * prev_node = NULL;
-    while (node != NULL) {
+void LinkedList::delete_value(const std::string& value) {
+    Node* node = head;
+    Node* prev_node = nullptr;
+    while (node != nullptr) {
         if (node->data == value) {
-            if (prev_node == NULL) {
+            if (prev_node == nullptr) {
                 head = node->next;
                 delete node;
                 return;
@@ -142,11 +137,11 @@ void LinkedList::delete_value(int value) {
 }
 
 void LinkedList::delete_last() {
-    Node *node = head;
-    while (node->next->next != NULL) {
+    Node* node = head;
+    while (node->next->next != nullptr) {
         node = node->next;
     }
-    node->next = NULL; // delete last value
+    node->next = nullptr; // Delete last value
 }
 
-LinkedList::~LinkedList() {} 
+LinkedList::~LinkedList() {}

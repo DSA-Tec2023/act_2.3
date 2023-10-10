@@ -16,9 +16,9 @@
 int main() { 
     std::cout << "Hello, world!" << std::endl;
     LinkedList list;
-    list.create_beginning(1);
+    list.create_beginning("hola");
 
-    list.create_position(1, 3); 
+    list.create_position(1, "andres"); 
     list.display_list();
 
     return 0; 
