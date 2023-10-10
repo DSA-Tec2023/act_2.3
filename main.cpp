@@ -2,16 +2,16 @@
 #include <fstream>
 #include "LinkedList.hpp"
 
-/*void read_and_get_bitacora_info(LinkedList& listaM, LinkedList& listaR, std::string file_name){
+void read_and_get_bitacora_info(LinkedList& listaM, LinkedList& listaR, std::string file_name){
     std::ifstream bitacora_file(file_name);
     std::string line;
     while (std::getline(bitacora_file, line)) {
-        if(line[17] == "M")
-            listaM.create_beginning(line)
+        if(line[17] == 'M')
+            listaM.create_beginning(line);
         else
-            listaR.create_beginning(line)
+            listaR.create_beginning(line);
     }
-}*/
+}
 
 int main() { 
     std::cout << "Hello, world!" << std::endl;
@@ -20,6 +20,11 @@ int main() {
 
     list.create_position(1, "andres"); 
     list.display_list();
+
+    LinkedList listaM, listaR;
+    read_and_get_bitacora_info(listaM, listaR, "prueba.txt");
+    listaM.display_list();
+    listaR.display_list();
 
     return 0; 
 }
