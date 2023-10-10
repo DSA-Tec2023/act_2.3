@@ -71,8 +71,7 @@ int main() {
     listaM.print_file("M_sorted.txt");
 
 
-
-    /* CON PRUEBA.TXT
+    /*//CON PRUEBA.TXT
     LinkedList listaM2;
     LinkedList listaR2;
     read_and_get_bitacora_info(listaM2, listaR2, "prueba.txt");
@@ -81,8 +80,8 @@ int main() {
     listaR2.merge_sort_id();
     listaM2.merge_sort_id();
     listaM2.display_list();
-    listaR2.display_list();
-    */
+    listaR2.display_list();*/
+    
 
     return 0; 
 }
