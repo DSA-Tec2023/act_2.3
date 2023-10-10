@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream> 
 #include "LinkedList.hpp"
 
 LinkedList::LinkedList() {
@@ -142,6 +143,16 @@ void LinkedList::delete_last() {
         node = node->next;
     }
     node->next = nullptr; // Delete last value
+}
+
+void LinkedList::print_file(std::string file_name) {
+    std::ofstream file(file_name);
+    Node* node = head;
+    while (node != nullptr) {
+        file << node->data << std::endl;
+        node = node->next;
+    }
+    file.close();
 }
 
 LinkedList::~LinkedList() {}

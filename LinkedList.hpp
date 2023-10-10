@@ -20,5 +20,6 @@ public:
     void delete_head();
     void delete_value(const std::string& value); // Change the argument type to string
     void delete_last();
+    void print_file(std::string); 
     ~LinkedList();
 };

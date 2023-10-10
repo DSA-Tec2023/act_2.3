@@ -55,9 +55,11 @@ int main() {
     
     std::cout << "Lista M" << std::endl;
     listaM.display_list();
+    listaM.print_file("M.txt");
 
     std::cout << "Lista R" << std::endl;
     listaR.display_list();
+    listaR.print_file("R.txt");
 
     std::string month = get_month(8);
     std::cout << "Month: " << month << std::endl;
