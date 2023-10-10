@@ -170,7 +170,19 @@ Node* LinkedList::merge(Node* l1, Node* l2) {
     std::string temp = l1->data.substr(l1->data.length() - 6); 
     std::string temp2 = l2->data.substr(l2->data.length() - 6);
 
-    if (temp < temp2) {
+    if(temp == temp2){
+        std::string fecha1 = l1->data.substr(6,4) + l1->data.substr(3,2) + l1->data.substr(0,2);
+        std::string fecha2 = l2->data.substr(6,4) + l2->data.substr(3,2) + l2->data.substr(0,2);
+
+        if(fecha1 <= fecha2){
+            l1->next = merge(l1->next, l2);
+            return l1;
+        } else{
+            l2->next = merge(l1, l2->next);
+            return l2;
+        }
+    }
+    else if (temp < temp2) {
         l1->next = merge(l1->next, l2);
         return l1;
     } else {
