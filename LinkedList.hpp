@@ -21,5 +21,10 @@ public:
     void delete_value(const std::string& value); // Change the argument type to string
     void delete_last();
     void print_file(std::string); 
+
+    Node * merge(Node *, Node *); 
+    Node * mergeSort(Node *);
+
+    void merge_sort_id(); 
     ~LinkedList();
 };

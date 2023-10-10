@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <fstream> 
+#include <fstream>
 #include "LinkedList.hpp"
 
 LinkedList::LinkedList() {
@@ -153,6 +153,49 @@ void LinkedList::print_file(std::string file_name) {
         node = node->next;
     }
     file.close();
+}
+
+Node* LinkedList::merge(Node* l1, Node* l2) {
+    if (!l1) return l2;
+    if (!l2) return l1;
+
+    std::string temp = l1->data.substr(l1->data.length() - 6); 
+    std::string temp2 = l2->data.substr(l2->data.length() - 6);
+
+    if (temp < temp2) {
+        l1->next = merge(l1->next, l2);
+        return l1;
+    } else {
+        l2->next = merge(l1, l2->next);
+        return l2;
+    }
+}
+
+Node* LinkedList::mergeSort(Node* head) {
+    if (!head || !head->next) {
+        return head;
+    }
+
+    // Step 1: Split the list in half
+    Node* slow = head;
+    Node* fast = head->next;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    Node* mid = slow->next;
+    slow->next = nullptr;
+
+    // Step 2: Recursively sort both lists
+    Node* left = mergeSort(head);
+    Node* right = mergeSort(mid);
+
+    // Step 3: Merge the two lists together
+    return merge(left, right);
+}
+
+void LinkedList::merge_sort_id() {
+    head = mergeSort(head);
 }
 
 LinkedList::~LinkedList() {}

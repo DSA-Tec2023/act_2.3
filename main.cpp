@@ -64,6 +64,11 @@ int main() {
     std::string month = get_month(8);
     std::cout << "Month: " << month << std::endl;
 
+    listaR.merge_sort_id(); // ?? 
+    listaR.print_file("R_sorted.txt");
+
+    listaM.merge_sort_id(); // ??
+    listaM.print_file("M_sorted.txt");
 
     return 0; 
 }
