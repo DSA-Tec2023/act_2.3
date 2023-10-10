@@ -70,5 +70,15 @@ int main() {
     listaM.merge_sort_id(); // ??
     listaM.print_file("M_sorted.txt");
 
+    LinkedList lista = listaM.merge(listaM.get_head(), listaR.get_head());
+    lista.print_file("MR_Sorted.txt");
+    std::cout << "Input the number you want to search for." << std::endl; 
+    std::string inp; 
+    std::cin >> inp;
+
+    lista.linear_search_ids(inp); 
+
+
+
     return 0; 
 }
