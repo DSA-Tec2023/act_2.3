@@ -155,6 +155,14 @@ void LinkedList::print_file(std::string file_name) {
     file.close();
 }
 
+/**
+ * @brief Merge sorting algorithm. 
+ * 
+ * @param l1 
+ * @param l2 
+ * @return Node* 
+ */
+
 Node* LinkedList::merge(Node* l1, Node* l2) {
     if (!l1) return l2;
     if (!l2) return l1;
@@ -176,26 +184,23 @@ Node* LinkedList::mergeSort(Node* head) {
         return head;
     }
 
-    // Step 1: Split the list in half
     Node* slow = head;
     Node* fast = head->next;
     while (fast && fast->next) {
         slow = slow->next;
         fast = fast->next->next;
     }
-    Node* mid = slow->next;
+    Node* mid = slow->next; // get the middle part :) 
     slow->next = nullptr;
 
-    // Step 2: Recursively sort both lists
     Node* left = mergeSort(head);
     Node* right = mergeSort(mid);
 
-    // Step 3: Merge the two lists together
     return merge(left, right);
 }
 
 void LinkedList::merge_sort_id() {
-    head = mergeSort(head);
+    head = mergeSort(head); // make it self sorting, without a return value nor a parameter
 }
 
 LinkedList::~LinkedList() {}
