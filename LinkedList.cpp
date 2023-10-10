@@ -84,7 +84,7 @@ int LinkedList::search(const std::string& value) {
 void LinkedList::display_list() {
     Node* node = head;
     while (node != nullptr) {
-        std::cout << node->data << " ";
+        std::cout << node->data << std::endl;
         node = node->next;
     }
     std::cout << std::endl;

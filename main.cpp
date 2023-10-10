@@ -34,14 +34,11 @@ void read_and_get_bitacora_info(LinkedList& listaM, LinkedList& listaR, std::str
     std::ifstream bitacora_file(file_name);
     std::string line;
     while (std::getline(bitacora_file, line)) {
-        if(line[17] == 'M') {
+        if(line[17] == 'M')
             listaM.create_beginning(line);
-        }
-        else {
+        else
             listaR.create_beginning(line);
-        }
     }
-    return;
 }
 
 int main() { 
