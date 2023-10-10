@@ -2,10 +2,10 @@
 
 class Node {
 public:
-    int data;
+    std::string data;
     Node *next;
     Node() {}
-    Node(int info) {
+    Node(std::string info) {
         data = info;
         next = NULL;
     }
