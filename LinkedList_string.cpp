@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "LinkedList copy.hpp"
+#include "LinkedList_string.hpp"
 
 LinkedList::LinkedList() {
     head = nullptr;
