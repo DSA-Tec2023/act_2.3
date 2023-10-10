@@ -11,6 +11,10 @@ LinkedList::LinkedList(Node* prev_node) {
     head = prev_node;
 }
 
+Node * LinkedList::get_head() {
+    return head;
+}
+
 void LinkedList::create_beginning(const std::string& new_data) {
     Node* new_node = new Node(new_data);
     new_node->next = head;
@@ -213,6 +217,38 @@ Node* LinkedList::mergeSort(Node* head) {
 
 void LinkedList::merge_sort_id() {
     head = mergeSort(head); // make it self sorting, without a return value nor a parameter
+}
+
+
+int LinkedList::get_length() { 
+    Node * head;
+    int length = 0; 
+    while (head != NULL) { 
+        length++; 
+    }
+    return length; 
+}
+
+std::string get_id(std::string str) { 
+    return str.substr(str.length() - 6);
+}
+
+std::string get_sub_id(std::string str) { 
+    str = str.substr(str.length() - 6);
+    str = str.substr(0, 3); // first three
+    return str;
+}
+
+void LinkedList::linear_search_ids(std::string str) { 
+    while (head != NULL) { 
+        std::string Ubi = get_sub_id(head->data); // 3 digits 
+        std::string Ubi_Complete = get_id(head->data);  // 5 digits
+
+        if (Ubi == str) { 
+            std::cout << "Found: " << Ubi_Complete << std::endl; 
+        }
+        head = head->next; 
+    }
 }
 
 LinkedList::~LinkedList() {}

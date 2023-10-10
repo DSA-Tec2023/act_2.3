@@ -9,22 +9,28 @@ class LinkedList {
 public:
     LinkedList();
     LinkedList(Node* prev_node);
+    Node * get_head();
 
-    void create_beginning(const std::string& new_data); // Change the argument type to string
-    void create_position(int position, const std::string& new_data); // Change the argument type to string
-    void insert_after_value(const std::string& value, const std::string& new_data); // Change argument types to string
-    void create_end(const std::string& new_data); // Change the argument type to string
-    int search(const std::string& value); // Change the return type and argument type to string
+    /* Base functions for linked list manipulation and usage. */
+    void create_beginning(const std::string& new_data);
+    void create_position(int position, const std::string& new_data);
+    void insert_after_value(const std::string& value, const std::string& new_data);
+    void create_end(const std::string& new_data);
+    int search(const std::string& value);
     void display_list();
-    void update(int position, const std::string& new_value); // Change the argument type to string
+    void update(int position, const std::string& new_value);
     void delete_head();
-    void delete_value(const std::string& value); // Change the argument type to string
+    void delete_value(const std::string& value);
     void delete_last();
-    void print_file(std::string); 
 
-    Node * merge(Node *, Node *); 
+    void print_file(std::string);
+
+    Node * merge(Node *, Node *);
     Node * mergeSort(Node *);
 
-    void merge_sort_id(); 
+    void linear_search_ids(std::string);
+    void merge_sort_id();
+    int get_length();
+
     ~LinkedList();
 };
