@@ -15,12 +15,6 @@ g++ -std=c++11 main.cpp LinkedList.cpp -o a.out
 ./a.out
 ```
 
-### To-Do List
-- Busqué el UBI 
-- Te genera una lista de todos los que tienen esos 3 caracteres al principio.
-- Con esa lista, te hace la de la fecha 
-- 
-
 ### Makefile 
 
 También se puede utilizar el siguiente comando para ejecutar el código: 
@@ -38,7 +32,7 @@ Nota: El archivo `Node.hpp` no tiene un `.cpp` por el hecho de que es una clase 
 
 ## Instrucciones
 
-¿Qué tengo que hacer?
+### ¿Qué tengo que hacer?
 
 El canal de Suez es un canal navegable que conecta el mar Mediterráneo con el mar Rojo a través de alrededor de 190 km, uniendo por un el lado del mar Mediterráneo desde el puerto Said hasta el golfo de Suez en el mar Rojo. Este canal es navegado entre 49 y 97 barcos diariamente. Se tiene un registro de los barcos que navegan por el canal con el siguiente formato.
 
