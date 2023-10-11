@@ -4,7 +4,11 @@
 #include "Node.hpp"
 
 class LinkedList {
+private:
     Node* head;
+
+    Node * merge(Node *, Node *);
+    Node * mergeSort(Node *);
 
 public:
     LinkedList();
@@ -25,8 +29,6 @@ public:
 
     void print_file(std::string);
 
-    Node * merge(Node *, Node *);
-    Node * mergeSort(Node *);
 
     void linear_search_ids(std::string);
     void merge_sort_id();

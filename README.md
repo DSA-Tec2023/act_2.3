@@ -15,6 +15,12 @@ g++ -std=c++11 main.cpp LinkedList.cpp -o a.out
 ./a.out
 ```
 
+### To-Do List
+- Busqué el UBI 
+- Te genera una lista de todos los que tienen esos 3 caracteres al principio.
+- Con esa lista, te hace la de la fecha 
+- 
+
 ### Makefile 
 
 También se puede utilizar el siguiente comando para ejecutar el código: 

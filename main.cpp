@@ -3,32 +3,7 @@
 #include "LinkedList.hpp"
 #include <string>
 #include <map>
-
-std::string get_month(int number) { 
-    std::map<int, std::string> months = {
-        {1, "January"},
-        {2, "February"},
-        {3, "March"},
-        {4, "April"},
-        {5, "May"},
-        {6, "June"},
-        {7, "July"},
-        {8, "August"},
-        {9, "September"},
-        {10, "October"},
-        {11, "November"},
-        {12, "December"}
-    };
-
-    if (months.find(number) != months.end()) {
-        return months[number]; 
-
-    } else {
-        return "";  
-    }
-
-}
-
+#include <vector>
 
 void read_and_get_bitacora_info(LinkedList& listaM, LinkedList& listaR, std::string file_name){
     std::ifstream bitacora_file(file_name);
@@ -41,6 +16,65 @@ void read_and_get_bitacora_info(LinkedList& listaM, LinkedList& listaR, std::str
     }
 }
 
+std::vector<int> getTotals(std::string file_name) {
+    std::ifstream file(file_name);
+    std::string line;
+    std::vector<int> total(12, 0);
+
+    while (std::getline(file, line)) {
+        if (line.size() >= 10) {
+            int dateDigit1 = line[3] - '0';
+            int dateDigit2 = line[4] - '0';
+
+            if (dateDigit1 == 0) {
+                if (dateDigit2 >= 1 && dateDigit2 <= 9) {
+                    total[dateDigit2 - 1]++;
+                }
+            } else if (dateDigit1 == 1) {
+                if (dateDigit2 >= 0 && dateDigit2 <= 2) {
+                    total[9 + dateDigit2]++;
+                }
+            }
+        }
+    }
+    return total;
+}
+
+
+
+std::string get_month(int number) { 
+    std::map<int, std::string> months = {
+        {0, "jan"},
+        {1, "feb"},
+        {2, "mar"},
+        {3, "apr"},
+        {4, "may"},
+        {5, "jun"},
+        {6, "jul"},
+        {7, "aug"},
+        {8, "sep"},
+        {9, "oct"},
+        {10, "nov"},
+        {11, "dec"}
+    };
+
+    if (months.find(number) != months.end()) {
+        return months[number]; 
+
+    } else {
+        return "";  
+    }
+
+}
+
+
+
+void printTotals(std::vector<int> mVector,std::vector<int> rVector) {
+    for (int i = 0; i < 12; i++)
+    {
+        std::cout << get_month(i) << " 2023 " << mVector[i] << " " << rVector[i] << std::endl;
+    }
+}
 int main() { 
     std::cout << "Hello, world!" << std::endl;
     LinkedList list;
@@ -53,12 +87,12 @@ int main() {
     LinkedList listaR;
     read_and_get_bitacora_info(listaM, listaR, "canal.txt");
     
-    //std::cout << "Lista M" << std::endl;
-    //listaM.display_list();
+    std::cout << "Lista M" << std::endl;
+    listaM.display_list();
     listaM.print_file("M.txt");
 
-    //std::cout << "Lista R" << std::endl;
-    //listaR.display_list();
+    std::cout << "Lista R" << std::endl;
+    listaR.display_list();
     listaR.print_file("R.txt");
 
     std::string month = get_month(8);
@@ -70,27 +104,10 @@ int main() {
     listaM.merge_sort_id(); // ??
     listaM.print_file("M_sorted.txt");
 
-    LinkedList lista = listaM.merge(listaM.get_head(), listaR.get_head());
-    lista.print_file("MR_Sorted.txt");
-    std::cout << "Input the number you want to search for." << std::endl; 
-    std::string inp; 
-    std::cin >> inp;
-
-    lista.linear_search_ids(inp); 
-
-
-
-    /*//CON PRUEBA.TXT
-    LinkedList listaM2;
-    LinkedList listaR2;
-    read_and_get_bitacora_info(listaM2, listaR2, "prueba.txt");
-    listaM2.display_list();
-    listaR2.display_list();
-    listaR2.merge_sort_id();
-    listaM2.merge_sort_id();
-    listaM2.display_list();
-    listaR2.display_list();*/
+    std::vector<int> totalsM = getTotals("M_sorted.txt");
+    std::vector<int> totalsR = getTotals("R_sorted.txt");
     
+    printTotals(totalsM,totalsR);
 
     return 0; 
 }
