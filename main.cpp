@@ -40,8 +40,6 @@ std::vector<int> getTotals(std::string file_name) {
     return total;
 }
 
-
-
 std::string get_month(int number) { 
     std::map<int, std::string> months = {
         {0, "jan"},
@@ -67,36 +65,25 @@ std::string get_month(int number) {
 
 }
 
-
-
 void printTotals(std::vector<int> mVector,std::vector<int> rVector) {
     for (int i = 0; i < 12; i++)
     {
-        std::cout << get_month(i) << " 2023 " << mVector[i] << " " << rVector[i] << std::endl;
+        std::cout << get_month(i) << " 23 " << mVector[i] << " " << rVector[i] << std::endl;
     }
 }
+
 int main() { 
-    std::cout << "Hello, world!" << std::endl;
-    LinkedList list;
-    list.create_beginning("hola");
-
-    list.create_position(1, "andres"); 
-    list.display_list();
-
     LinkedList listaM;
     LinkedList listaR;
     read_and_get_bitacora_info(listaM, listaR, "canal.txt");
     
-    std::cout << "Lista M" << std::endl;
-    listaM.display_list();
+    //std::cout << "Lista M" << std::endl;
+    //listaM.display_list();
     listaM.print_file("M.txt");
 
-    std::cout << "Lista R" << std::endl;
-    listaR.display_list();
+    //std::cout << "Lista R" << std::endl;
+    //listaR.display_list();
     listaR.print_file("R.txt");
-
-    std::string month = get_month(8);
-    std::cout << "Month: " << month << std::endl;
 
     listaR.merge_sort_id(); // ?? 
     listaR.print_file("R_sorted.txt");
@@ -104,8 +91,17 @@ int main() {
     listaM.merge_sort_id(); // ??
     listaM.print_file("M_sorted.txt");
 
-    std::vector<int> totalsM = getTotals("M_sorted.txt");
-    std::vector<int> totalsR = getTotals("R_sorted.txt");
+    std::string buscar;
+    std::cout << "Escriba los primeros 3 caracteres del UBI a buscar: "<< std::endl;
+    std::cin >> buscar;
+
+    LinkedList foundM = listaM.linear_search_ids(buscar);
+    foundM.print_file("Found_M.txt");
+    LinkedList foundR = listaR.linear_search_ids(buscar);
+    foundR.print_file("Found_R.txt");
+
+    std::vector<int> totalsM = getTotals("Found_M.txt");
+    std::vector<int> totalsR = getTotals("Found_R.txt");
     
     printTotals(totalsM,totalsR);
 

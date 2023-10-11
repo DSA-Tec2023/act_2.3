@@ -30,7 +30,7 @@ public:
     void print_file(std::string);
 
 
-    void linear_search_ids(std::string);
+    LinkedList linear_search_ids(std::string);
     void merge_sort_id();
     int get_length();
 
