@@ -5,6 +5,23 @@
 #include <map>
 #include <vector>
 
+/**
+ * 
+ * Actividad 2.3
+ * Estructura de Datos y Algoritmos 
+ * Prof. Baldomero Olvera Villanueva
+ * 
+ * Código que lee un archivo, separa las entradas en 2 listas ligadas dependiendo del punto de entrada,
+ * ordena los datos en base a su UBI y fecha, pide al usuario los primeros 3 caracteres del UBI 
+ * e imprime cuantos barcos con coincidencia pasaron por los distintos puntos de entrada cada mes.
+ * 
+ * Andrés Daniel Martínez - A00227463
+ * Fernanda Granados - A01252895
+ * Santiago Poblete - A01254609
+ * Martín Tanori - A01252900
+ * 
+ */
+
 void read_and_get_bitacora_info(LinkedList& listaM, LinkedList& listaR, std::string file_name){
     std::ifstream bitacora_file(file_name);
     std::string line;
