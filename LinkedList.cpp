@@ -219,17 +219,10 @@ void LinkedList::merge_sort_id() {
     head = mergeSort(head); // make it self sorting, without a return value nor a parameter
 }
 
-<<<<<<< HEAD
-int LinkedList::get_length() {
-    int length = 0;
-    while (head != NULL) {
-        length++;
-=======
 int LinkedList::get_length() { 
     int length = 0; 
     while (head != NULL) { 
         length++; 
->>>>>>> 889371933e6c04112f67f1316453fdf1bc705e8a
     }
     return length;
 }
@@ -244,44 +237,11 @@ std::string get_sub_id(std::string str) {
     return str;
 }
 
-<<<<<<< HEAD
 LinkedList LinkedList::linear_search_ids(std::string str) {
     LinkedList found;
     Node* temp = head;
     while (temp != NULL) {
         std::string Ubi = get_sub_id(temp->data); // 3 digits
-=======
-Node * LinkedList::getMiddle() { 
-    Node * slow = head;
-    Node * fast = head; 
-
-    while (fast != NULL) { 
-        fast = fast->next->next; 
-        slow = slow->next; 
-    }
-    return slow; 
-}
-
-void LinkedList::binary_search_ids(std::string inp) { 
-    Node * middle = getMiddle(); 
-    std::string Ubi = get_sub_id(middle->data); // 3 digits
-    std::string Ubi_Complete = get_id(middle->data);  // 5 digits
-
-    if (Ubi == inp) { 
-        std::cout << "Found: " << Ubi_Complete << std::endl; 
-    } else if (Ubi < inp) { 
-        binary_search_ids(inp); 
-    } else { 
-        binary_search_ids(inp); 
-    }
-}
-
-LinkedList LinkedList::linear_search_ids(std::string str) { 
-    LinkedList found;
-    Node* temp = head;
-    while (temp != NULL) { 
-        std::string Ubi = get_sub_id(temp->data); // 3 digits 
->>>>>>> 889371933e6c04112f67f1316453fdf1bc705e8a
 
         if (Ubi == str) {
             found.create_beginning(temp->data);
