@@ -32,7 +32,7 @@ public:
     Node * getMiddle(); 
     void binary_search_ids(std::string inp); 
 
-    void linear_search_ids(std::string);
+    LinkedList linear_search_ids(std::string);
     void merge_sort_id();
     int get_length();
 

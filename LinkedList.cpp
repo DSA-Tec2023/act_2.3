@@ -239,6 +239,7 @@ std::string get_sub_id(std::string str) {
     return str;
 }
 
+<<<<<<< HEAD
 Node * LinkedList::getMiddle() { 
     Node * slow = head;
     Node * fast = head; 
@@ -268,12 +269,20 @@ void LinkedList::linear_search_ids(std::string str) {
     while (head != NULL) { 
         std::string Ubi = get_sub_id(head->data); // 3 digits 
         std::string Ubi_Complete = get_id(head->data);  // 5 digits
+=======
+LinkedList LinkedList::linear_search_ids(std::string str) { 
+    LinkedList found;
+    Node* temp = head;
+    while (temp != NULL) { 
+        std::string Ubi = get_sub_id(temp->data); // 3 digits 
+>>>>>>> f630479932d8ac753a29500ff8fe36a9cc8a2851
 
         if (Ubi == str) { 
-            std::cout << "Found: " << Ubi_Complete << std::endl; 
+            found.create_beginning(temp->data); 
         }
-        head = head->next; 
+        temp = temp->next; 
     }
+    return found;
 }
 
 LinkedList::~LinkedList() {}
