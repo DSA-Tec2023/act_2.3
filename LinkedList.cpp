@@ -66,6 +66,12 @@ void LinkedList::insert_after_value(const std::string& value, const std::string&
 void LinkedList::create_end(const std::string& new_data) {
     Node* node = head;
     Node* new_node = new Node(new_data);
+
+    if(head == nullptr){
+        head = new_node;
+        return;
+    }
+
     while (node->next != nullptr) {
         node = node->next;
     }
