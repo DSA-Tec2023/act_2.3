@@ -160,28 +160,28 @@ void LinkedList::print_file(std::string file_name) {
 }
 
 /**
- * @brief Merge sorting algorithm. 
- * 
- * @param l1 
- * @param l2 
- * @return Node* 
+ * @brief Merge sorting algorithm.
+ *
+ * @param l1
+ * @param l2
+ * @return Node*
  */
 
 Node* LinkedList::merge(Node* l1, Node* l2) {
     if (!l1) return l2;
     if (!l2) return l1;
 
-    std::string temp = l1->data.substr(l1->data.length() - 6); 
+    std::string temp = l1->data.substr(l1->data.length() - 6);
     std::string temp2 = l2->data.substr(l2->data.length() - 6);
 
-    if(temp == temp2){
+    if(temp == temp2) {
         std::string fecha1 = l1->data.substr(6,4) + l1->data.substr(3,2) + l1->data.substr(0,2);
         std::string fecha2 = l2->data.substr(6,4) + l2->data.substr(3,2) + l2->data.substr(0,2);
 
-        if(fecha1 <= fecha2){
+        if(fecha1 <= fecha2) {
             l1->next = merge(l1->next, l2);
             return l1;
-        } else{
+        } else {
             l2->next = merge(l1, l2->next);
             return l2;
         }
@@ -206,7 +206,7 @@ Node* LinkedList::mergeSort(Node* head) {
         slow = slow->next;
         fast = fast->next->next;
     }
-    Node* mid = slow->next; // get the middle part :) 
+    Node* mid = slow->next; // get the middle part :)
     slow->next = nullptr;
 
     Node* left = mergeSort(head);
@@ -219,71 +219,36 @@ void LinkedList::merge_sort_id() {
     head = mergeSort(head); // make it self sorting, without a return value nor a parameter
 }
 
-
-int LinkedList::get_length() { 
-    Node * head;
-    int length = 0; 
-    while (head != NULL) { 
-        length++; 
+int LinkedList::get_length() {
+    int length = 0;
+    while (head != NULL) {
+        length++;
     }
-    return length; 
+    return length;
 }
 
-std::string get_id(std::string str) { 
+std::string get_id(std::string str) {
     return str.substr(str.length() - 6);
 }
 
-std::string get_sub_id(std::string str) { 
+std::string get_sub_id(std::string str) {
     str = str.substr(str.length() - 6);
     str = str.substr(0, 3); // first three
     return str;
 }
 
-<<<<<<< HEAD
-Node * LinkedList::getMiddle() { 
-    Node * slow = head;
-    Node * fast = head; 
-
-    while (fast != NULL) { 
-        fast = fast->next->next; 
-        slow = slow->next; 
-    }
-    return slow; 
-}
-
-void LinkedList::binary_search_ids(std::string inp) { 
-    Node * middle = getMiddle(); 
-    std::string Ubi = get_sub_id(middle->data); // 3 digits
-    std::string Ubi_Complete = get_id(middle->data);  // 5 digits
-
-    if (Ubi == inp) { 
-        std::cout << "Found: " << Ubi_Complete << std::endl; 
-    } else if (Ubi < inp) { 
-        binary_search_ids(inp); 
-    } else { 
-        binary_search_ids(inp); 
-    }
-}
-
-void LinkedList::linear_search_ids(std::string str) { 
-    while (head != NULL) { 
-        std::string Ubi = get_sub_id(head->data); // 3 digits 
-        std::string Ubi_Complete = get_id(head->data);  // 5 digits
-=======
-LinkedList LinkedList::linear_search_ids(std::string str) { 
+LinkedList LinkedList::linear_search_ids(std::string str) {
     LinkedList found;
     Node* temp = head;
-    while (temp != NULL) { 
-        std::string Ubi = get_sub_id(temp->data); // 3 digits 
->>>>>>> f630479932d8ac753a29500ff8fe36a9cc8a2851
+    while (temp != NULL) {
+        std::string Ubi = get_sub_id(temp->data); // 3 digits
 
-        if (Ubi == str) { 
-            found.create_beginning(temp->data); 
+        if (Ubi == str) {
+            found.create_beginning(temp->data);
         }
-        temp = temp->next; 
+        temp = temp->next;
     }
     return found;
 }
 
 LinkedList::~LinkedList() {}
-
