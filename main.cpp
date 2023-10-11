@@ -93,19 +93,14 @@ int main() {
     LinkedList listaM;
     LinkedList listaR;
     read_and_get_bitacora_info(listaM, listaR, "canal.txt");
-    
-    //std::cout << "Lista M" << std::endl;
-    //listaM.display_list();
-    listaM.print_file("M.txt");
 
-    //std::cout << "Lista R" << std::endl;
-    //listaR.display_list();
+    listaM.print_file("M.txt");
     listaR.print_file("R.txt");
 
-    listaR.merge_sort_id(); // ?? 
+    listaR.merge_sort_id();  
     listaR.print_file("R_sorted.txt");
 
-    listaM.merge_sort_id(); // ??
+    listaM.merge_sort_id(); 
     listaM.print_file("M_sorted.txt");
 
     std::string buscar;
